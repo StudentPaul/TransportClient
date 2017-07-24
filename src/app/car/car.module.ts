@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CarComponent } from './car.component';
 import { CarRoutingModule } from './car-routing.module';
+import { CoreModule } from '../core/core.module';
+
 
 
 
 @NgModule({
   imports: [
-    CommonModule,
-    CarRoutingModule
+    CarRoutingModule,
+    CoreModule
   ],
   declarations: [
     CarComponent
+  ],
+  providers: [
+
   ]
 })
 export class CarModule { }

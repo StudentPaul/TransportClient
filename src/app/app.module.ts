@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DriverModule } from './driver/driver.module';
 import { CarModule } from './car/car.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './api.service';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -14,8 +17,12 @@ import { ApiService } from './api.service';
   imports: [
     AppRoutingModule,
     CoreModule,
+    SharedModule.forRoot(),
     DriverModule,
-    CarModule
+    CarModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule
   ],
   providers: [
     ApiService

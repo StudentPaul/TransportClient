@@ -1,12 +1,46 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <nav>
-    <a routerLink="cars" routerLinkActive="active">Cars</a>
-    <a routerLink="drivers"  routerLinkActive="active">Drivers</a>
-  </nav>
-  <router-outlet></router-outlet>
+<div  class="container-fluid">
+  <md-card class="top-panel">
+    <div class="row">
+      <div [className]="group.value=='drivers'?'col-md-3':'col-md-4'" class="col">
+        <md-select placeholder="Автоколонна" [(ngModel)]="selectedConvoy"
+                   (ngModelChange)="changeConvoy()" name="food">
+          <md-option *ngFor="let convoy of convoys" [value]="convoy">
+            {{ convoy }}
+          </md-option>
+        </md-select>
+      </div>
+      <div *ngIf="group.value=='drivers'"  class="col col-md-2">
+        <md-select placeholder="Статус" [(ngModel)]="selectedStatus"
+                   (ngModelChange)="changeStatus()">
+          <md-option *ngFor="let status of statuses" [value]="status">
+            {{ status }}
+          </md-option>
+        </md-select>
+      </div>
+      <div [className]="group.value=='drivers'?'col-md-3':'col-md-4'" class="col">
+        <md-input-container >
+          <md-placeholder>
+            <md-icon>search</md-icon> Поисковый запрос
+          </md-placeholder>
+          <input mdInput type="text"  [(ngModel)]="searchKeyword"
+                 (keyup)="changeKeyword()">
+        </md-input-container>
+      </div>
+      <div class="col col-md-4">
+        <md-button-toggle-group  #group="mdButtonToggleGroup">
+          <md-button-toggle  value="cars" routerLink="cars" routerLinkActive="active">
+            Автомобили
+          </md-button-toggle>
+          <md-button-toggle  value="drivers" routerLink="drivers"  routerLinkActive="active">
+            Водители
+          </md-button-toggle>
+        </md-button-toggle-group>
+      </div>
+    </div>
+  </md-card>
+  <div class="app-router">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
 
