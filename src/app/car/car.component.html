@@ -4,9 +4,7 @@
       <app-car-list (carSelected)="carSelected($event)" ></app-car-list>
     </div>
     <div class="col col-md-4">
-      <md-card>
-        <app-car-panel [selectedCarId]="selectedCarId"></app-car-panel>
-      </md-card>
+        <app-car-panel *ngIf="selectedCarId" [selectedCarId]="selectedCarId"></app-car-panel>
     </div>
   </div>
 </div>

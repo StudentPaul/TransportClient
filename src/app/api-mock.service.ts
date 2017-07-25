@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
 
 import {Car, CarEnums} from './car/car.classes';
 import { Driver } from './driver/driver.classes';
@@ -54,37 +55,151 @@ export class ApiService {
   }
 
   public getCarById(carId: number): Observable<Car> {
-    return Observable.of(
-      new Car({
-          id: 3,
-          manufacturer: 'Acura',
-          model: 'Integra',
-          color: 'Красная',
-          stateNumber: 'B 323 BB 77',
-          year: '1980',
-          convoy: '0001А-АНижний Новгород',
-          bodyType: 'Седан',
-          organization: true,
-          availableForAll: false,
-          options: {
-            'Детское кресло': false,
-            'Багаж': true,
-            'доставка': true,
-            'Кондиционер': false,
-            'до 1 кг': false,
-            'Некурящий водитель': true
-          },
-          notes: 'Машина в отличном состоянии',
-          drivers: [
-            new Driver({
-              id: 3,
-              firstName: 'Иван',
-              secondName: 'Иванов',
-              parentName: 'Иванович'
-            })
-          ],
-        })
-    );
+    if (!carId) {
+     return Observable.throw('invalid carId');
+    }
+    switch (carId) {
+      case 1: {
+        return Observable.of(
+          new Car({
+            id: 1,
+            manufacturer: 'Chana',
+            model: 'Benni',
+            color: 'Голубая',
+            imageURL: 'assets/Chana_Benni.jpg',
+            stateNumber: 'G 565 FGN',
+            year: '1980',
+            convoy: '0001А-АНижний Новгород',
+            bodyType: 'Седан',
+            organization: true,
+            availableForAll: false,
+            options: {
+              'Детское кресло': false,
+              'Багаж': true,
+              'доставка': true,
+              'Кондиционер': false,
+              'до 1 кг': false,
+              'Некурящий водитель': true
+            },
+            notes: 'Машина в отличном состоянии',
+            drivers: [
+              new Driver({
+                id: 3,
+                firstName: 'Иван',
+                secondName: 'Иванов',
+                parentName: 'Иванович'
+              })
+            ],
+          })
+        );
+      }
+      case 2: {
+        return Observable.of(
+          new Car({
+            id: 2,
+            manufacturer: 'ГолАЗ',
+            model: '5291',
+            color: 'Голубая',
+            imageURL: 'assets/golaz_5291_1.jpg',
+            stateNumber: 'B 323 BB 77',
+            year: '1980',
+            convoy: '0001А-АНижний Новгород',
+            bodyType: 'Автобус',
+            organization: true,
+            availableForAll: false,
+            options: {
+              'Детское кресло': false,
+              'Багаж': true,
+              'доставка': true,
+              'Кондиционер': false,
+              'до 1 кг': false,
+              'Некурящий водитель': true
+            },
+            notes: 'Машина в отличном состоянии',
+            drivers: [
+              new Driver({
+                id: 3,
+                firstName: 'Иван',
+                secondName: 'Иванов',
+                parentName: 'Иванович'
+              })
+            ],
+          })
+        );
+      }
+      case 3: {
+        return Observable.of(
+          new Car({
+            id: 3,
+            manufacturer: 'Acura',
+            model: 'Integra',
+            color: 'Красная',
+            imageURL: 'assets/U8AAGEB3.JPG',
+            stateNumber: 'B 323 BB 77',
+            year: '1980',
+            convoy: '0001А-АНижний Новгород',
+            bodyType: 'Седан',
+            organization: true,
+            availableForAll: false,
+            options: {
+              'Детское кресло': false,
+              'Багаж': true,
+              'доставка': true,
+              'Кондиционер': false,
+              'до 1 кг': false,
+              'Некурящий водитель': true
+            },
+            notes: 'Машина в отличном состоянии',
+            drivers: [
+              new Driver({
+                id: 3,
+                firstName: 'Иван',
+                secondName: 'Иванов',
+                parentName: 'Иванович'
+              })
+            ],
+          })
+        );
+      }
+      case 4: {
+        return Observable.of(
+          new Car({
+            id: 4,
+            manufacturer: 'ВАЗ',
+            model: '1117 Kalina Универсал',
+            color: 'Красный',
+            imageURL: 'assets/vaz-1260-1.jpg',
+            stateNumber: 'П 6565 РР',
+            year: '1980',
+            convoy: '0001А-АНижний Новгород',
+            bodyType: 'Седан',
+            organization: true,
+            availableForAll: false,
+            options: {
+              'Детское кресло': false,
+              'Багаж': true,
+              'доставка': true,
+              'Кондиционер': false,
+              'до 1 кг': false,
+              'Некурящий водитель': true
+            },
+            notes: 'Машина в отличном состоянии',
+            drivers: [
+              new Driver({
+                id: 3,
+                firstName: 'Иван',
+                secondName: 'Иванов',
+                parentName: 'Иванович'
+              })
+            ],
+          })
+        );
+      }
+      default: {
+        break;
+      }
+    }
+
   }
 
   public updateCar(car: Car): Observable<Car> {

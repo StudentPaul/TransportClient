@@ -17,6 +17,7 @@ export class Car {
   options: Object;
   notes: string;
   drivers: Array<Driver>;
+  imageURL: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
