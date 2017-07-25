@@ -7,7 +7,6 @@ import { CoreModule } from './core/core.module';
 import { DriverModule } from './driver/driver.module';
 import { CarModule } from './car/car.module';
 import { AppRoutingModule } from './app-routing.module';
-import { ApiService } from './api.service';
 import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
@@ -25,7 +24,6 @@ import {SharedModule} from "./shared/shared.module";
     CommonModule
   ],
   providers: [
-    ApiService
   ],
   bootstrap: [
     AppComponent

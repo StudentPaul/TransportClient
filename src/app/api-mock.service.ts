@@ -6,7 +6,7 @@ import {Car, CarEnums} from './car/car.classes';
 import { Driver } from './driver/driver.classes';
 
 @Injectable()
-export class ApiMockService {
+export class ApiService {
 
   constructor(
   ) {

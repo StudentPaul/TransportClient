@@ -32,6 +32,8 @@ import { MdAutocompleteModule,
   MdToolbarModule,
   MdTooltipModule} from '@angular/material';
 import 'hammerjs';
+import {CdkTableModule} from '@angular/cdk';
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   imports: [
@@ -68,8 +70,11 @@ import 'hammerjs';
     MdTabsModule,
     MdToolbarModule,
     MdTooltipModule,
+    CdkTableModule,
+    HttpModule
   ],
   exports: [
+    CdkTableModule,
     FormsModule,
     ReactiveFormsModule,
     MdAutocompleteModule,
@@ -103,6 +108,7 @@ import 'hammerjs';
     MdTabsModule,
     MdToolbarModule,
     MdTooltipModule,
+    HttpModule
   ],
   providers: [],
   declarations: []
