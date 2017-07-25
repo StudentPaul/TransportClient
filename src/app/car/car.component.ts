@@ -10,10 +10,10 @@ import {Subscription} from 'rxjs/Subscription';
 export class CarComponent implements OnInit, OnDestroy {
 
   constructor(private shared: SharedService) {}
+  selectedCarId: number;
   keyword = '';
   convoy = '';
   keywordSubscription: Subscription;
-  statusSubscription: Subscription;
   convoySubscription: Subscription;
   ngOnInit() {
     this.keywordSubscription = this.shared.keyword$
@@ -24,6 +24,9 @@ export class CarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.keywordSubscription.unsubscribe();
     this.convoySubscription.unsubscribe();
+  }
+  carSelected(id: number) {
+    this.selectedCarId = id;
   }
 
 }
