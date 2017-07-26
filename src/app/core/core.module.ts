@@ -34,10 +34,12 @@ import { MdAutocompleteModule,
 import 'hammerjs';
 import {CdkTableModule} from '@angular/cdk';
 import {HttpModule} from "@angular/http";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   imports: [
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     MdAutocompleteModule,
     MdButtonModule,
@@ -76,6 +78,7 @@ import {HttpModule} from "@angular/http";
   exports: [
     CdkTableModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     MdAutocompleteModule,
     MdButtonModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Subscription} from "rxjs";
 import {SharedService} from "../shared/shared.service";
+import {MdSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-driver',
@@ -8,8 +9,8 @@ import {SharedService} from "../shared/shared.service";
   styleUrls: ['./driver.component.sass']
 })
 export class DriverComponent implements OnInit, OnDestroy {
-
-  constructor(private shared: SharedService) {}
+  constructor(private shared: SharedService , private snackBar: MdSnackBar) {}
+  selectedDriverId: number;
   keyword = '';
   status = '';
   convoy = '';
@@ -28,6 +29,17 @@ export class DriverComponent implements OnInit, OnDestroy {
     this.keywordSubscription.unsubscribe();
     this.statusSubscription.unsubscribe();
     this.convoySubscription.unsubscribe();
+  }
+  driverSelected(id: number) {
+    this.selectedDriverId = id;
+  }
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+    });
+  }
+  unselectDriver() {
+    this.selectedDriverId = null;
   }
 
 }

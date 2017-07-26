@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/delay';
 import {Car, CarEnums} from './car/car.classes';
 import { Driver } from './driver/driver.classes';
 
@@ -112,35 +113,84 @@ export class ApiService {
   public getAllDrivers(): Observable<Driver[]> {
     return Observable.of([
       new Driver({
-          id: 1,
-          firstName: 'Петр',
-          secondName: 'Петров'
-        }),
+        id: 1,
+        firstName: 'Александр',
+        secondName: 'Петров',
+        parentName: 'Николаевич',
+        onDuty: true,
+        balance: 300,
+        callSign: 33365,
+        phoneNumbers: ['+73655525425'],
+        cars: [
+          new Car({
+            id: 4,
+            manufacturer: 'ВАЗ',
+            model: '1117 Kalina Универсал',
+            color: 'Красный',
+            stateNumber: 'П 6565 РР',
+            convoy: '0001А-АНижний Новгород'
+          })
+        ]
+      }),
       new Driver({
-          id: 2,
-          firstName: 'Иван',
-          secondName: 'Иванов'
-        }),
+        id: 2,
+        firstName: 'Петр',
+        secondName: 'Петров',
+        parentName: 'Петрович',
+        onDuty: true,
+        balance: 300,
+        callSign: 45,
+        phoneNumbers: ['+73655525425'],
+        cars: [
+          new Car({
+            id: 4,
+            manufacturer: 'ВАЗ',
+            model: '1117 Kalina Универсал',
+            color: 'Красный',
+            stateNumber: 'П 6565 РР',
+            convoy: '0001А-АНижний Новгород'
+          })
+        ]
+      }),
       new Driver({
-          id: 3,
-          firstName: 'Иван',
-          secondName: 'Иванов',
-          parentName: 'Иванович'
-        }),
+        id: 3,
+        firstName: 'Коновал',
+        secondName: 'Дмитрий',
+        parentName: 'Дмитриевич',
+        onDuty: true,
+        balance: 300,
+        callSign: 2265,
+        phoneNumbers: ['+73655525425'],
+        cars: [
+          new Car({
+            id: 4,
+            manufacturer: 'ВАЗ',
+            model: '1117 Kalina Универсал',
+            color: 'Красный',
+            stateNumber: 'П 6565 РР',
+            convoy: '0001А-АНижний Новгород'
+          })
+        ]
+      }),
       new Driver({
-          id: 4,
-          firstName: 'Петр',
-          secondName: 'Петров',
-          callSign: 1010,
-          onDuty: true
-        }),
-      new Driver({
-          id: 5,
-          firstName: 'Александр',
-          secondName: 'Петров',
-          parentName: 'Николаевич',
-          callSign: 33365
-        }),
+        id: 4,
+        firstName: 'Александр',
+        secondName: 'Петров',
+        parentName: 'Николаевич',
+        onDuty: false,
+        balance: 300,
+        phoneNumbers: ['+73655525425'],
+        cars: [
+          new Car({
+            id: 4,
+            manufacturer: 'ВАЗ',
+            model: '1117 Kalina Универсал',
+            color: 'Красный',
+            stateNumber: 'П 6565 РР',
+            convoy: '0001А-АНижний Новгород'
+          })
+        ]
+      })
     ]);
   }
 
@@ -155,6 +205,8 @@ export class ApiService {
           firstName: 'Александр',
           secondName: 'Петров',
           parentName: 'Николаевич',
+          status: 'На смене',
+          balance: 300,
           callSign: 33365,
           phoneNumbers: ['+73655525425'],
           cars: [
@@ -171,8 +223,8 @@ export class ApiService {
     );
   }
 
-  public updateDriver(car: Car): Observable<Car> {
-    return Observable.of(car);
+  public updateDriver(driver: Driver): Observable<Driver> {
+    return Observable.of(driver).delay(3000);
   }
 
   public deleteDriverById(carId: number): Observable<null> {
