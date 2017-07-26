@@ -6,6 +6,7 @@ import {CarListComponent} from './car-list/car-list.component';
 import {CarDataService} from './car-data.service';
 import {CarPanelComponent} from './car-panel/car-panel.component';
 import {ApiService} from '../api-mock.service';
+import {CarEditComponent} from './car-edit/car-edit.component';
 
 
 @NgModule({
@@ -16,11 +17,15 @@ import {ApiService} from '../api-mock.service';
   declarations: [
     CarComponent,
     CarListComponent,
-    CarPanelComponent
+    CarPanelComponent,
+    CarEditComponent
   ],
   providers: [
     CarDataService,
     ApiService
+  ],
+  bootstrap: [
+    CarEditComponent
   ]
 })
 export class CarModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
 import {SharedService} from '../shared/shared.service';
 import {Subscription} from 'rxjs/Subscription';
+import {MdSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-car',
@@ -9,7 +10,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class CarComponent implements OnInit, OnDestroy {
 
-  constructor(private shared: SharedService) {}
+  constructor(private shared: SharedService, private snackBar: MdSnackBar) {}
   selectedCarId: number;
   keyword = '';
   convoy = '';
@@ -27,6 +28,14 @@ export class CarComponent implements OnInit, OnDestroy {
   }
   carSelected(id: number) {
     this.selectedCarId = id;
+  }
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
+    });
+  }
+  unselectCar() {
+    this.selectedCarId = null;
   }
 
 }

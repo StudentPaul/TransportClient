@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/delay';
 
 import {Car, CarEnums} from './car/car.classes';
 import { Driver } from './driver/driver.classes';
@@ -167,7 +168,7 @@ export class ApiService {
             id: 4,
             manufacturer: 'ВАЗ',
             model: '1117 Kalina Универсал',
-            color: 'Красный',
+            color: 'Красная',
             imageURL: 'assets/vaz-1260-1.jpg',
             stateNumber: 'П 6565 РР',
             year: '1980',
@@ -203,24 +204,25 @@ export class ApiService {
   }
 
   public updateCar(car: Car): Observable<Car> {
-    return Observable.of(car);
+    return Observable.of(car).delay(3000);
   }
 
   public deleteCarById(carId: number): Observable<null> {
-    return null;
+    return Observable.of(null).delay(3000);;
   }
   public getCarEnums(): Observable<CarEnums> {
     return Observable.of(
       new CarEnums({
-          manufacturers: [
-            {name: 'Acura', models: ['Integra', 'AcuraModel1', 'AcuraModel2']},
-            {name: 'Chana', models: ['Benni', 'ChanaModel1', 'ChanaModel2']},
-            {name: 'ВАЗ', models: ['1117 Kalina Универсал', 'Model1', 'Model2']},
-            {name: 'ГолАЗ', models: ['5291', '5527', '5101']},
-          ],
-          colors: ['Красная', 'Голубая', 'Серая', 'Желтая', 'Черная', 'Зеленая'],
-          bodyTypes: ['Седан', 'Хэтчбек', 'Купе', 'Универсал', 'Микроавтобус', 'Минивэн'],
-          options: ['Детское кресло', 'Багаж', 'доставка', 'Кондиционер', 'до 1 кг', 'Некурящий водитель'],
+        manufacturers: [
+          {name: 'Acura', models: ['Integra', 'AcuraModel1', 'AcuraModel2']},
+          {name: 'Chana', models: ['Benni', 'ChanaModel1', 'ChanaModel2']},
+          {name: 'ВАЗ', models: ['1117 Kalina Универсал', 'Model1', 'Model2']},
+          {name: 'ГолАЗ', models: ['5291', '5527', '5101']},
+        ],
+        colors: ['Красная', 'Голубая', 'Серая', 'Желтая', 'Черная', 'Зеленая'],
+        bodyTypes: ['Седан', 'Хэтчбек', 'Купе', 'Универсал', 'Автобус', 'Минивэн'],
+        options: ['Детское кресло', 'Багаж', 'доставка', 'Кондиционер', 'до 1 кг', 'Некурящий водитель'],
+        convoys: ['0001А-АНижний Новгород', '0002А-АНижний Новгород', '0003А-АНижний Новгород']
         })
     );
   }
@@ -286,8 +288,10 @@ export class ApiService {
     );
   }
 
-  public updateDriver(car: Car): Observable<Car> {
-    return Observable.of(car);
+  public updateDriver(driver: Driver): Observable<Driver> {
+     return Observable.of(driver).delay(3000);
+
+
   }
 
   public deleteDriverById(carId: number): Observable<null> {
