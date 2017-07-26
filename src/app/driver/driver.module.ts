@@ -18,11 +18,15 @@ import {ApiService} from "../api-mock.service";
   declarations: [
     DriverComponent,
     DriverListComponent,
-    DriverPanelComponent
+    DriverPanelComponent,
+    DriverEditComponent
   ],
   providers: [
     DriverDataService,
     ApiService
+  ],
+  bootstrap: [
+    DriverEditComponent
   ]
 })
 export class DriverModule { }

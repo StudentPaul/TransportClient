@@ -119,6 +119,8 @@ export class ApiService {
       onDuty: true,
       balance: 300,
       callSign: 33365,
+      imageURL: 'assets/petrov1.jpeg',
+      birthDate: '01/12/1996',
       phoneNumbers: ['+73655525425', '+73555525425', '+73655525433'],
       cars: [
         new Car({
@@ -139,7 +141,9 @@ export class ApiService {
       onDuty: true,
       balance: 300,
       callSign: 45,
-      phoneNumbers: ['+73655525425', '+73555525425'],
+      imageURL: 'assets/petrov2.jpg',
+      birthDate: '12/30/1988',
+      phoneNumbers: ['+73655525425', '+73555525425',],
       cars: [
         new Car({
           id: 4,
@@ -159,6 +163,8 @@ export class ApiService {
       onDuty: true,
       balance: 300,
       callSign: 2265,
+      imageURL: 'assets/petrov3.gif',
+      birthDate: '11/13/1990',
       phoneNumbers: ['+73655525425'],
       cars: [
         new Car({
@@ -178,6 +184,8 @@ export class ApiService {
       parentName: 'Николаевич',
       onDuty: false,
       balance: 300,
+      imageURL: 'assets/petrov4.jpg',
+      birthDate: '02/22/1992',
       phoneNumbers: ['+73655525425'],
       cars: [
         new Car({
@@ -235,6 +243,6 @@ export class ApiService {
   }
 
   public deleteDriverById(carId: number): Observable<null> {
-    return null;
+    return Observable.of(null).delay(1000);
   }
 }

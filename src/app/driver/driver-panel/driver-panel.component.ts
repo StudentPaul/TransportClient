@@ -3,6 +3,7 @@ import {Driver} from "../driver.classes";
 import {Subscription} from "rxjs";
 import {DriverDataService} from "../driver-data.service";
 import {MdDialog, MdDialogConfig} from "@angular/material";
+import {DriverEditComponent} from "../driver-edit/driver-edit.component";
 
 @Component({
   selector: 'app-driver-panel',
@@ -29,8 +30,30 @@ export class DriverPanelComponent implements OnInit {
   ngOnInit() {
   }
   openEditDialog() {
+    const config = new MdDialogConfig();
+    const dialogRef = this.dialog.open(DriverEditComponent, config);
+    dialogRef.componentInstance.driver = this.driver;
+    dialogRef.componentInstance.snackBarOpened.subscribe(data => this.openSnackBar(data));
+    dialogRef.afterClosed().subscribe(
+      result => {
+      }
+    );
   }
   delete() {
+    this.deleting = true;
+    this.driverData.deleteDriverById(this.driver.id).subscribe(
+      result => {
+        this.deleting = false;
+        this.unselectDriver.emit();
+        this.openSnackBar('Запись удалена');
+      },
+      error => {
+        this.deleting = false;
+        this.openSnackBar(error);
+      }
+    );
   }
-
+  openSnackBar(message: string) {
+    this.snackBarOpened.emit(message);
+  }
 }

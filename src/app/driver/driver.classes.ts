@@ -21,6 +21,7 @@ export class Driver {
   livingAdress: string;
   phoneNumbers: Array<string>;
   cars: Array<Car>;
+  imageURL: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
