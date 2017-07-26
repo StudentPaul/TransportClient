@@ -4,7 +4,7 @@ import {CarModule} from './car/car.module';
 import {DriverModule} from './driver/driver.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'drivers', pathMatch: 'full'},
+  { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'cars',  loadChildren: 'app/car/car.module#CarModule' },
   { path: 'drivers',  loadChildren: 'app/driver/driver.module#DriverModule' },
 ];

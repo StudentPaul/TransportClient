@@ -1,3 +1,50 @@
-<p>
-  driver-edit works!
-</p>
+<div class="dialog-container">
+  <form #loginForm="ngForm">
+    <h1 md-dialog-title align="center">КАРТОЧКА ВОДИТЕЛЯ</h1>
+    <div md-dialog-content  class="flex-container">
+      <div class="photo-holder flex-photo-item">
+        <img src="{{driver.imageURL}}">
+      </div>
+      <div class="flex-container flex-cont-item">
+        <div class="info-holder flex-item">
+          <md-input-container >
+            <md-placeholder>Фамилия</md-placeholder>
+            <input required mdInput [(ngModel)]="driver.secondName" name="secondName" type="text">
+          </md-input-container>
+        </div>
+        <div class="info-holder flex-item">
+          <md-input-container >
+            <md-placeholder>Имя</md-placeholder>
+            <input required mdInput [(ngModel)]="driver.firstName" name="firstName" type="text">
+          </md-input-container>
+        </div>
+        <div class="info-holder flex-item">
+          <md-input-container >
+            <md-placeholder>Отчество</md-placeholder>
+            <input mdInput [(ngModel)]="driver.parentName" name="parentName" type="text">
+          </md-input-container>
+        </div>
+        <div class="info-holder flex-item">
+          <md-input-container>
+            <input mdInput [(ngModel)]="driver.birthDate" [mdDatepicker]="picker" name="date" placeholder="Дата рождения">
+            <button mdSuffix [mdDatepickerToggle]="picker"></button>
+          </md-input-container>
+          <md-datepicker #picker></md-datepicker>
+        </div>
+      </div>
+    </div>
+    <div md-dialog-actions align="center">
+  <span>
+    <button disable class="menu-btn left" md-raised-button color="primary"  (click)="openSnackBar('Функция не реализована')">ОТПРАВИТЬ ССЫЛКУ НА ПРИЛОЖЕНИЕ</button>
+  </span>
+      <span class="example-fill-remaining-space"></span>
+      <span>
+    <md-spinner [style.visibility]="saving?'visible':'hidden'" class="right"></md-spinner>
+    <button  class="right menu-btn"   md-raised-button color="primary" [disabled]="loginForm.invalid||saving" (click)="save()">СОХРАНИТЬ</button>
+    <button  class="menu-btn right"  md-raised-button color="accent"  (click)="dialogRef.close('closed')">ОТМЕНА</button>
+  </span>
+    </div>
+
+  </form>
+
+</div>

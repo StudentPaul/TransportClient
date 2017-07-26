@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../api-mock.service';
 import { Observable } from 'rxjs/Observable';
 
 import { Driver } from './driver.classes';
@@ -18,12 +18,12 @@ export class DriverDataService {
   }
 
   // Simulate DELETE /drivers/:id
-  deleteTodoById(driverId: number): Observable<Driver> {
+  deleteDriverById(driverId: number): Observable<Driver> {
     return this.api.deleteDriverById(driverId);
   }
 
   // Simulate PUT /drivers/:id
-  updateTodo(driver: Driver): Observable<Driver> {
+  updateDriver(driver: Driver): Observable<Driver> {
     return this.api.updateDriver(driver);
   }
 
@@ -33,7 +33,7 @@ export class DriverDataService {
   }
 
   // Simulate GET /drivers/:id
-  getTodoById(driverId: number): Observable<Driver> {
+  getDriverById(driverId: number): Observable<Driver> {
     return this.api.getDriverById(driverId);
   }
 
