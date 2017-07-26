@@ -1,7 +1,7 @@
 <div  class="container-fluid">
   <md-card class="top-panel">
     <div class="row">
-      <div [className]="group.value=='drivers'?'col-md-3':'col-md-4'" >
+      <div [className]="getRouteURL()==='/drivers'?'col-md-3':'col-md-4'" >
         <md-select placeholder="Автоколонна" [(ngModel)]="selectedConvoy"
                    (ngModelChange)="changeConvoy()" name="food">
           <md-option *ngFor="let convoy of convoys" [value]="convoy">
@@ -9,7 +9,7 @@
           </md-option>
         </md-select>
       </div>
-      <div *ngIf="group.value=='drivers'"  class="col-md-2">
+      <div *ngIf="getRouteURL()==='/drivers'"  class="col-md-2">
         <md-select placeholder="Статус" [(ngModel)]="selectedStatus"
                    (ngModelChange)="changeStatus()">
           <md-option *ngFor="let status of statuses" [value]="status">
@@ -17,7 +17,7 @@
           </md-option>
         </md-select>
       </div>
-      <div [className]="group.value=='drivers'?'col-md-3':'col-md-4'" >
+      <div [className]="getRouteURL()=='/drivers'?'col-md-3':'col-md-4'" >
         <md-input-container >
           <md-placeholder>
             <md-icon>search</md-icon> Поисковый запрос
@@ -42,5 +42,3 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-
-

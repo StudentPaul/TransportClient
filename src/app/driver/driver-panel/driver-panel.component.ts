@@ -11,6 +11,7 @@ import {DriverEditComponent} from "../driver-edit/driver-edit.component";
   styleUrls: ['./driver-panel.component.sass']
 })
 export class DriverPanelComponent implements OnInit {
+
   driver: Driver;
   driverSubscriber: Subscription;
   deleting = false;
@@ -25,6 +26,7 @@ export class DriverPanelComponent implements OnInit {
       },
       error => {});
   }
+
   constructor(private driverData: DriverDataService, public dialog: MdDialog) { }
 
   ngOnInit() {

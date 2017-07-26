@@ -5,28 +5,21 @@
 
   <md-table #table [dataSource]="dataSource">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- ID Column -->
     <ng-container cdkColumnDef="callSign">
       <md-header-cell *cdkHeaderCellDef> Позывной </md-header-cell>
       <md-cell class="cell call-sign-cell" *cdkCellDef="let row"> {{row.callSign||'N/A'}} </md-cell>
     </ng-container>
 
-    <!-- Progress Column -->
     <ng-container cdkColumnDef="fullName">
       <md-header-cell *cdkHeaderCellDef> ФИО </md-header-cell>
       <md-cell class="cell" *cdkCellDef="let row"> {{row.secondName+' '+row.firstName+' '+row.parentName}} </md-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container cdkColumnDef="status">
       <md-header-cell *cdkHeaderCellDef> Статус </md-header-cell>
       <md-cell class="cell" *cdkCellDef="let row"><md-icon [style.color]="row.onDuty?'green':'red'">directions_car</md-icon> {{row.onDuty?'На смене':'Не на смене'}} </md-cell>
     </ng-container>
 
-    <!-- Color Column -->
     <ng-container cdkColumnDef="balance">
       <md-header-cell *cdkHeaderCellDef> Баланс </md-header-cell>
       <md-cell class="cell balance-cell" *cdkCellDef="let row"> {{row.balance}} </md-cell>

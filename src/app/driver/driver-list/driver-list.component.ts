@@ -21,7 +21,6 @@ import {DriverDataService} from '../driver-data.service';
 })
 export class DriverListComponent implements OnInit {
 
-  constructor(private driverData: DriverDataService, private shared: SharedService) { }
   filterWords = {keyword: '', status: ''};
   @Output()
   driverSelected: EventEmitter<number> = new EventEmitter();
@@ -32,7 +31,7 @@ export class DriverListComponent implements OnInit {
   driverDatabase = new DriverDatabase(this.driverData);
   dataSource: DriverDataSource | null;
 
-  @ViewChild('filter') filter: ElementRef;
+  constructor(private driverData: DriverDataService, private shared: SharedService) { }
 
   ngOnInit() {
     this.dataSource = new DriverDataSource(this.driverDatabase, this.filterWords);
@@ -71,11 +70,11 @@ export class DriverDataSource extends DataSource<any> {
 
   filterChange = new BehaviorSubject('');
   get filter(): string { return this.filterChange.value; }
-  changeFilter() { this.filterChange.next(this.filterKeywords); }
 
   constructor(private exampleDatabase: DriverDatabase, private filterKeywords: any) {
     super();
   }
+  changeFilter() { this.filterChange.next(this.filterKeywords); }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<Driver[]> {

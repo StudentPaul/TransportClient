@@ -1,10 +1,17 @@
 <div class="container-fluid">
   <div class="row">
+
     <div class="col col-md-8">
-      <app-car-list (carSelected)="carSelected($event)" ></app-car-list>
+      <app-car-list (carSelected)="carSelected($event)"></app-car-list>
     </div>
+
     <div class="col col-md-4">
-        <app-car-panel *ngIf="selectedCarId" (snackBarOpened)="openSnackBar($event)" (unselectCar)="unselectCar()" [selectedCarId]="selectedCarId"></app-car-panel>
+        <app-car-panel *ngIf="selectedCarId"
+                       (snackBarOpened)="openSnackBar($event)"
+                       (unselectCar)="unselectCar()"
+                       [selectedCarId]="selectedCarId">
+        </app-car-panel>
     </div>
+
   </div>
 </div>

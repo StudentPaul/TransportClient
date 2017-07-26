@@ -4,14 +4,15 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class SharedService {
 
+  private keywordSource = new BehaviorSubject<string>('');
+  private convoySource = new BehaviorSubject<string>('');
+  private statusSource = new BehaviorSubject<string>('');
+  keyword$ = this.keywordSource.asObservable();
+  convoy$ = this.convoySource.asObservable();
+  status$ = this.statusSource.asObservable();
+
   constructor() {}
 
-  private keywordSource = new BehaviorSubject<string>('');
-  keyword$ = this.keywordSource.asObservable();
-  private convoySource = new BehaviorSubject<string>('');
-  convoy$ = this.convoySource.asObservable();
-  private statusSource = new BehaviorSubject<string>('');
-  status$ = this.statusSource.asObservable();
   changeKeyword(keyword) {
     this.keywordSource.next(keyword);
   }

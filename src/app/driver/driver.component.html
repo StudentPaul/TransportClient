@@ -1,9 +1,11 @@
 <div class="container-fluid">
   <div class="row">
+
     <div class="col col-md-8">
         <app-driver-list (driverSelected)="driverSelected($event)">
         </app-driver-list>
     </div>
+
     <div class="col col-md-4">
         <app-driver-panel *ngIf="selectedDriverId"
                           (snackBarOpened)="openSnackBar($event)"

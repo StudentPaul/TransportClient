@@ -1,4 +1,3 @@
-
 import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
 import {DataSource} from '@angular/cdk';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -21,10 +20,9 @@ import {Car} from "../car.classes";
   styleUrls: ['./car-list.component.sass']
 })
 export class CarListComponent  {
-  constructor (private carData: CarDataService, private shared: SharedService) {}
+
   filterWords = {keyword: '', convoy: ''};
-  @Output()
-  carSelected: EventEmitter<number> = new EventEmitter();
+  @Output() carSelected: EventEmitter<number> = new EventEmitter();
   selectedCarId: number;
   keywordSubscription: Subscription;
   convoySubscription: Subscription;
@@ -32,7 +30,7 @@ export class CarListComponent  {
   carDatabase = new CarDatabase(this.carData);
   dataSource: CarDataSource | null;
 
-  @ViewChild('filter') filter: ElementRef;
+  constructor (private carData: CarDataService, private shared: SharedService) {}
 
   ngOnInit() {
     this.dataSource = new CarDataSource(this.carDatabase, this.filterWords);
@@ -53,10 +51,7 @@ export class CarListComponent  {
   }
 }
 
-
-/** An example database that the data source uses to retrieve data for the table. */
 export class CarDatabase {
-  /** Stream that emits whenever the data has been modified. */
   dataChange: BehaviorSubject<Car[]> = new BehaviorSubject<Car[]>([]);
   get data(): Car[] { return this.dataChange.value; }
 
@@ -68,13 +63,6 @@ export class CarDatabase {
   }
 }
 
-/**
- * Data source to provide what data should be rendered in the table. Note that the data source
- * can retrieve its data in any way. In this case, the data source is provided a reference
- * to a common data base, CarDatabase. It is not the data source's responsibility to manage
- * the underlying data. Instead, it only needs to take the data and send the table exactly what
- * should be rendered.
- */
 export class CarDataSource extends DataSource<any> {
   filterChange = new BehaviorSubject('');
   get filter(): string { return this.filterChange.value; }
@@ -84,7 +72,6 @@ export class CarDataSource extends DataSource<any> {
     super();
   }
 
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<Car[]> {
     const displayDataChanges = [
       this.exampleDatabase.dataChange,

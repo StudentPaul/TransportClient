@@ -6,9 +6,11 @@
     <md-card-subtitle>{{car?car.color:''}}</md-card-subtitle>
     <md-card-subtitle>{{car?car.stateNumber:''}}</md-card-subtitle>
   </md-card-header>
+
   <img md-card-image src="{{car.imageURL}}">
-  <md-card-content>
-  </md-card-content>
+
+  <md-card-content></md-card-content>
+
   <md-card-actions>
     <span><button class="left" md-button color="primary" (click)="openEditDialog()" ><md-icon>mode_edit</md-icon></button></span>
     <span class="example-fill-remaining-space"></span>

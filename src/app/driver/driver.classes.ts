@@ -4,6 +4,7 @@
 import { Car } from '../car/car.classes';
 
 export class Driver {
+
   id: number;
   callSign: number;
   onDuty = false;

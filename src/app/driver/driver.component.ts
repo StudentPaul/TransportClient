@@ -9,7 +9,7 @@ import {MdSnackBar} from "@angular/material";
   styleUrls: ['./driver.component.sass']
 })
 export class DriverComponent implements OnInit, OnDestroy {
-  constructor(private shared: SharedService , private snackBar: MdSnackBar) {}
+
   selectedDriverId: number;
   keyword = '';
   status = '';
@@ -17,6 +17,9 @@ export class DriverComponent implements OnInit, OnDestroy {
   keywordSubscription: Subscription;
   statusSubscription: Subscription;
   convoySubscription: Subscription;
+
+  constructor(private shared: SharedService , private snackBar: MdSnackBar) {}
+
   ngOnInit() {
     this.keywordSubscription = this.shared.keyword$
       .subscribe(item => this.keyword = item);

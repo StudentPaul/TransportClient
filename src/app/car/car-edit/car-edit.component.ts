@@ -11,14 +11,15 @@ import {CarDataService} from "../car-data.service";
 export class CarEditComponent implements OnInit {
 
   car: Car;
-  constructor(public dialogRef: MdDialogRef<CarEditComponent>, private carData: CarDataService, private snackBar: MdSnackBar) { }
   carEnums: CarEnums;
   saving = false;
   @Output() snackBarOpened: EventEmitter<string> = new EventEmitter();
+
+  constructor(public dialogRef: MdDialogRef<CarEditComponent>, private carData: CarDataService, private snackBar: MdSnackBar) { }
+
   getModels(manufacturer: string) {
     return this.carEnums.manufacturers.find(item => item.name === manufacturer ).models;
   }
-
   ngOnInit() {
     this.carData.getCarEnums().subscribe(
       enums => {
@@ -43,5 +44,4 @@ export class CarEditComponent implements OnInit {
   openSnackBar(message: string) {
     this.snackBarOpened.emit(message);
   }
-
 }

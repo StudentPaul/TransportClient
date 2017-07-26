@@ -9,9 +9,11 @@ import {DriverDataService} from '../driver-data.service';
   styleUrls: ['./driver-edit.component.sass']
 })
 export class DriverEditComponent implements OnInit {
+
   driver: Driver;
   saving = false;
   @Output() snackBarOpened: EventEmitter<string> = new EventEmitter();
+
   constructor(public dialogRef: MdDialogRef<DriverEditComponent>, private driverData: DriverDataService, private snackBar: MdSnackBar) { }
 
   ngOnInit() {

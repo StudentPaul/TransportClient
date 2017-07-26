@@ -10,12 +10,14 @@ import {MdSnackBar} from "@angular/material";
 })
 export class CarComponent implements OnInit, OnDestroy {
 
-  constructor(private shared: SharedService, private snackBar: MdSnackBar) {}
   selectedCarId: number;
   keyword = '';
   convoy = '';
   keywordSubscription: Subscription;
   convoySubscription: Subscription;
+
+  constructor(private shared: SharedService, private snackBar: MdSnackBar) {}
+
   ngOnInit() {
     this.keywordSubscription = this.shared.keyword$
       .subscribe(item => this.keyword = item);

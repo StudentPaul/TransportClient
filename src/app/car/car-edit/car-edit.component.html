@@ -2,10 +2,14 @@
   <form #loginForm="ngForm">
     <h1 md-dialog-title align="center">КАРТОЧКА АВТОМОБИЛЯ</h1>
     <div md-dialog-content  class="flex-container">
+
       <div class="photo-holder flex-photo-item">
         <img src="{{car.imageURL}}">
       </div>
+
+
       <div class="flex-container flex-cont-item">
+
         <div class="info-holder flex-item">
           <md-select required placeholder="марка" name="manufacturer" [(ngModel)]="car.manufacturer">
             <md-option *ngFor="let manufacturer of carEnums.manufacturers" [value]="manufacturer.name">
@@ -13,6 +17,7 @@
             </md-option>
           </md-select>
         </div>
+
         <div class="info-holder flex-item">
           <md-select required placeholder="модель" name="model" [(ngModel)]="car.model">
             <md-option  *ngFor="let model of getModels(car.manufacturer)" [value]="model">
@@ -20,6 +25,7 @@
             </md-option>
           </md-select>
         </div>
+
         <div class="info-holder flex-item">
           <md-select required placeholder="цвет" name="color" [(ngModel)]="car.color">
             <md-option *ngFor="let color of carEnums.colors" [value]="color">
@@ -27,18 +33,21 @@
             </md-option>
           </md-select>
         </div>
+
         <div class="info-holder flex-item">
           <md-input-container >
             <md-placeholder>госномер</md-placeholder>
             <input required mdInput [(ngModel)]="car.stateNumber" name="stateNumber" type="text">
           </md-input-container>
         </div>
+
         <div class="info-holder flex-item">
           <md-input-container >
             <md-placeholder>год</md-placeholder>
             <input required mdInput [(ngModel)]="car.year" name="year" type="number">
           </md-input-container>
         </div>
+
         <div class="info-holder flex-item">
           <md-select required placeholder="тип кузова" name="bodyType" [(ngModel)]="car.bodyType">
             <md-option *ngFor="let bodyType of carEnums.bodyTypes" [value]="bodyType">
@@ -46,6 +55,7 @@
             </md-option>
           </md-select>
         </div>
+
         <div class="info-holder flex-item">
           <md-select required placeholder="тип кузова" name="convoy" [(ngModel)]="car.convoy">
             <md-option *ngFor="let convoy of carEnums.convoys" [value]="convoy">
@@ -53,24 +63,30 @@
             </md-option>
           </md-select>
         </div>
+
         <div class="info-holder flex-item">
-          <md-checkbox [(ngModel)]="car.organization" name="organization">Автомобиль организации</md-checkbox>
-          <md-checkbox [(ngModel)]="car.availableForAll" name="availableForAll">Доступен всем водителям</md-checkbox>
+          <md-checkbox [(ngModel)]="car.organization" name="organization">
+            Автомобиль организации
+          </md-checkbox>
+          <md-checkbox [(ngModel)]="car.availableForAll" name="availableForAll">
+            Доступен всем водителям
+          </md-checkbox>
         </div>
+
       </div>
     </div>
+
     <div md-dialog-actions align="center">
-  <span>
-    <button   class="menu-btn left" md-raised-button color="primary"  (click)="openSnackBar('Функция не реализована')">КОД РЕГИСТРАЦИИ ПРИЛОЖЕНИЯ</button>
-  </span>
+      <span>
+        <button   class="menu-btn left" md-raised-button color="primary"  (click)="openSnackBar('Функция не реализована')">КОД РЕГИСТРАЦИИ ПРИЛОЖЕНИЯ</button>
+      </span>
       <span class="example-fill-remaining-space"></span>
       <span>
-    <md-spinner [style.visibility]="saving?'visible':'hidden'" class="right"></md-spinner>
-    <button  class="right menu-btn"   md-raised-button color="primary" [disabled]="loginForm.invalid||saving" (click)="save()">СОХРАНИТЬ</button>
-    <button  class="menu-btn right"  md-raised-button color="accent"  (click)="dialogRef.close('closed')">ОТМЕНА</button>
-  </span>
+        <md-spinner [style.visibility]="saving?'visible':'hidden'" class="right"></md-spinner>
+        <button  class="right menu-btn"   md-raised-button color="primary" [disabled]="loginForm.invalid||saving" (click)="save()">СОХРАНИТЬ</button>
+        <button  class="menu-btn right"  md-raised-button color="accent"  (click)="dialogRef.close('closed')">ОТМЕНА</button>
+      </span>
     </div>
 
   </form>
-
 </div>
