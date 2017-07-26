@@ -17,7 +17,7 @@
     <!-- Progress Column -->
     <ng-container cdkColumnDef="fullName">
       <md-header-cell *cdkHeaderCellDef> ФИО </md-header-cell>
-      <md-cell class="cell" *cdkCellDef="let row"> {{row.firstName+' '+row.secondName+' '+row.parentName}} </md-cell>
+      <md-cell class="cell" *cdkCellDef="let row"> {{row.secondName+' '+row.firstName+' '+row.parentName}} </md-cell>
     </ng-container>
 
     <!-- Name Column -->

@@ -110,88 +110,89 @@ export class ApiService {
         })
     );
   }
+  drivers = [
+    new Driver({
+      id: 1,
+      firstName: 'Александр',
+      secondName: 'Петров',
+      parentName: 'Николаевич',
+      onDuty: true,
+      balance: 300,
+      callSign: 33365,
+      phoneNumbers: ['+73655525425', '+73555525425', '+73655525433'],
+      cars: [
+        new Car({
+          id: 4,
+          manufacturer: 'ВАЗ',
+          model: '1117 Kalina Универсал',
+          color: 'Красный',
+          stateNumber: 'П 6565 РР',
+          convoy: '0001А-АНижний Новгород'
+        })
+      ]
+    }),
+    new Driver({
+      id: 2,
+      firstName: 'Петр',
+      secondName: 'Петров',
+      parentName: 'Петрович',
+      onDuty: true,
+      balance: 300,
+      callSign: 45,
+      phoneNumbers: ['+73655525425', '+73555525425'],
+      cars: [
+        new Car({
+          id: 4,
+          manufacturer: 'ВАЗ',
+          model: '1117 Kalina Универсал',
+          color: 'Красный',
+          stateNumber: 'П 6565 РР',
+          convoy: '0001А-АНижний Новгород'
+        })
+      ]
+    }),
+    new Driver({
+      id: 3,
+      firstName: 'Коновал',
+      secondName: 'Дмитрий',
+      parentName: 'Дмитриевич',
+      onDuty: true,
+      balance: 300,
+      callSign: 2265,
+      phoneNumbers: ['+73655525425'],
+      cars: [
+        new Car({
+          id: 4,
+          manufacturer: 'ВАЗ',
+          model: '1117 Kalina Универсал',
+          color: 'Красный',
+          stateNumber: 'П 6565 РР',
+          convoy: '0001А-АНижний Новгород'
+        })
+      ]
+    }),
+    new Driver({
+      id: 4,
+      firstName: 'Александр',
+      secondName: 'Петров',
+      parentName: 'Николаевич',
+      onDuty: false,
+      balance: 300,
+      phoneNumbers: ['+73655525425'],
+      cars: [
+        new Car({
+          id: 4,
+          manufacturer: 'ВАЗ',
+          model: '1117 Kalina Универсал',
+          color: 'Красный',
+          stateNumber: 'П 6565 РР',
+          convoy: '0001А-АНижний Новгород'
+        })
+      ]
+    })
+  ];
   public getAllDrivers(): Observable<Driver[]> {
-    return Observable.of([
-      new Driver({
-        id: 1,
-        firstName: 'Александр',
-        secondName: 'Петров',
-        parentName: 'Николаевич',
-        onDuty: true,
-        balance: 300,
-        callSign: 33365,
-        phoneNumbers: ['+73655525425'],
-        cars: [
-          new Car({
-            id: 4,
-            manufacturer: 'ВАЗ',
-            model: '1117 Kalina Универсал',
-            color: 'Красный',
-            stateNumber: 'П 6565 РР',
-            convoy: '0001А-АНижний Новгород'
-          })
-        ]
-      }),
-      new Driver({
-        id: 2,
-        firstName: 'Петр',
-        secondName: 'Петров',
-        parentName: 'Петрович',
-        onDuty: true,
-        balance: 300,
-        callSign: 45,
-        phoneNumbers: ['+73655525425'],
-        cars: [
-          new Car({
-            id: 4,
-            manufacturer: 'ВАЗ',
-            model: '1117 Kalina Универсал',
-            color: 'Красный',
-            stateNumber: 'П 6565 РР',
-            convoy: '0001А-АНижний Новгород'
-          })
-        ]
-      }),
-      new Driver({
-        id: 3,
-        firstName: 'Коновал',
-        secondName: 'Дмитрий',
-        parentName: 'Дмитриевич',
-        onDuty: true,
-        balance: 300,
-        callSign: 2265,
-        phoneNumbers: ['+73655525425'],
-        cars: [
-          new Car({
-            id: 4,
-            manufacturer: 'ВАЗ',
-            model: '1117 Kalina Универсал',
-            color: 'Красный',
-            stateNumber: 'П 6565 РР',
-            convoy: '0001А-АНижний Новгород'
-          })
-        ]
-      }),
-      new Driver({
-        id: 4,
-        firstName: 'Александр',
-        secondName: 'Петров',
-        parentName: 'Николаевич',
-        onDuty: false,
-        balance: 300,
-        phoneNumbers: ['+73655525425'],
-        cars: [
-          new Car({
-            id: 4,
-            manufacturer: 'ВАЗ',
-            model: '1117 Kalina Универсал',
-            color: 'Красный',
-            stateNumber: 'П 6565 РР',
-            convoy: '0001А-АНижний Новгород'
-          })
-        ]
-      })
-    ]);
+    return Observable.of(this.drivers);
   }
 
   public createDriver(driver: Driver): Observable<Driver> {
@@ -199,28 +200,34 @@ export class ApiService {
   }
 
   public getDriverById(driverId: number): Observable<Driver> {
-    return Observable.of(
-      new Driver({
-          id: 5,
-          firstName: 'Александр',
-          secondName: 'Петров',
-          parentName: 'Николаевич',
-          status: 'На смене',
-          balance: 300,
-          callSign: 33365,
-          phoneNumbers: ['+73655525425'],
-          cars: [
-            new Car({
-                id: 4,
-                manufacturer: 'ВАЗ',
-                model: '1117 Kalina Универсал',
-                color: 'Красный',
-                stateNumber: 'П 6565 РР',
-                convoy: '0001А-АНижний Новгород'
-              })
-          ]
-        })
-    );
+    if (!driverId) {
+      return Observable.throw('invalid carId');
+    }
+    switch (driverId) {
+      case 1: {
+        return Observable.of(
+          this.drivers[0]
+        );
+      }
+      case 2: {
+        return Observable.of(
+          this.drivers[1]
+        );
+      }
+      case 3: {
+        return Observable.of(
+          this.drivers[2]
+        );
+      }
+      case 4: {
+        return Observable.of(
+          this.drivers[3]
+        );
+      }
+      default: {
+        break;
+      }
+    }
   }
 
   public updateDriver(driver: Driver): Observable<Driver> {
