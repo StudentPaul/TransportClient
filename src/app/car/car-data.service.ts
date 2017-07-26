@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../api-mock.service';
 import { Observable } from 'rxjs/Observable';
-
 import {Car, CarEnums} from './car.classes';
 
 @Injectable()
-export class TodoDataService {
+export class CarDataService {
 
   constructor(
     private api: ApiService

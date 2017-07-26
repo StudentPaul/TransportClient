@@ -17,6 +17,7 @@ export class Car {
   options: Object;
   notes: string;
   drivers: Array<Driver>;
+  imageURL: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
@@ -28,6 +29,7 @@ export class CarEnums {
   bodyTypes: Array<string>;
   colors: Array<string>;
   options: Array<string>;
+  convoys: Array<string>;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

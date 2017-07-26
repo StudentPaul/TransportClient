@@ -38,6 +38,7 @@ import {CommonModule} from "@angular/common";
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
@@ -77,6 +78,7 @@ import {CommonModule} from "@angular/common";
   ],
   exports: [
     CdkTableModule,
+    CommonModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,

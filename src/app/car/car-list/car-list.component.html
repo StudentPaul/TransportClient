@@ -1,3 +1,41 @@
-<p>
-  car-list works!
-</p>
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    Автомобили
+  </div>
+
+  <md-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container cdkColumnDef="manufacturer">
+      <md-header-cell *cdkHeaderCellDef> Модель </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.manufacturer}} </md-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container cdkColumnDef="color">
+      <md-header-cell *cdkHeaderCellDef> Цвет </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.color}} </md-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="stateNumber">
+      <md-header-cell *cdkHeaderCellDef> Госномер </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.stateNumber}} </md-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container cdkColumnDef="convoy">
+      <md-header-cell *cdkHeaderCellDef> Автоколонна </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.convoy}} </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"
+            [class.selected]="row.id == selectedCarId"
+            (click)="handleRowClick(row)"></md-row>
+
+  </md-table>
+</div>
