@@ -40,8 +40,6 @@ import {CommonModule} from "@angular/common";
   imports: [
     CommonModule,
     FormsModule,
-    CommonModule,
-    ReactiveFormsModule,
     MdAutocompleteModule,
     MdButtonModule,
     MdButtonToggleModule,
@@ -80,8 +78,6 @@ import {CommonModule} from "@angular/common";
     CdkTableModule,
     CommonModule,
     FormsModule,
-    CommonModule,
-    ReactiveFormsModule,
     MdAutocompleteModule,
     MdButtonModule,
     MdButtonToggleModule,
